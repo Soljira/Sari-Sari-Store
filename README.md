@@ -5,3 +5,10 @@ Deadline: Sept 12 2025
 - Customer Page
 - Items Page
 - Transaction
+
+
+
+
+Apache needs to be configured to recognize index.php as an index file.
+https://stackoverflow.com/questions/2384423/index-php-not-loading-by-default
+Just append 'index.php' (beside index.html) to DirectoryIndex in /etc/httpd/conf/httpd.conf
