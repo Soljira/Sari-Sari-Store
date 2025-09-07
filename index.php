@@ -35,11 +35,46 @@
         </div>
     </div>
 
-    <h2>Analytics</h2>
-    <!-- insert data here -->
+    <div class="container">
+        <h2>Analytics</h2>
+        <!-- insert data here -->
+        <canvas class="m-4" id="myChart" width="1200" height="400"></canvas>
 
-    <div class="model" tabindex="-1">
     </div>
+
+
+        <!-- Graphs -->
+    <!-- From Bootstrap Dashboard Example -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script>
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          datasets: [{
+            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointBackgroundColor: '#007bff'
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: false
+              }
+            }]
+          },
+          legend: {
+            display: false,
+          }
+        }
+      });
+    </script>
 
     <?php
         include("./src/components/footer.php");

@@ -79,7 +79,7 @@
         $intColumns = array("stock_quantity", "quantity");
         $floatColumns = array("price", "total_amount");        
         ?>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mb-5">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
@@ -135,9 +135,10 @@
                             </div>
                     <?php
             }  // end of foreach block ?>
-                            <div class="row mb-3">
+                            </div>
+                            <div class="row justify-content-end mb-3">
                                 <!-- <label class="col-sm-3 col-form-label">Name</label> -->
-                                <div class="col-sm-9 offset-sm-3">
+                                <div class="col-sm-3 d-grid">
                                     <div class="d-flex gap-2">
                                         <button type="submit" class="btn btn-primary" name="editItemSubmit">Submit</button>
                                         <a href="<?php echo $_SESSION['selectedTablePage']?>" class="btn btn-outline-secondary" role="button">Cancel</a>
@@ -145,8 +146,9 @@
                                     </div>
                                 </div>
                             </div>
+
                         </form>
-                    </div>
+
                 </div>
             </div>
         </div>

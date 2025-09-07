@@ -31,7 +31,7 @@
 
     <div class="container mx-auto">
 
-        <main>
+        <main class="mb-5">
             <?php
                 $selectedTable = $_SESSION['selectedTable'];
 
@@ -122,7 +122,7 @@
 
                         // This will print all table columns
             ?>
-                        <div class="row justify-content-center mt-5">
+                        <div class="row justify-content-center">
                             <div class="col-md-8">
                                 <div class="card">
                                     <div class="card-body">
@@ -144,7 +144,7 @@
                                                                 }
                                                             ?>
                                                         </label>
-                                                        <div class="col-sm-6">
+                                                        <div class="col-sm-9">
                                                             <?php if ($columnName == "created_at") {
                                                                 continue;
                                                             } elseif ($tables[$tableIndex] == "orderItemTable") {   //whats this??>
@@ -187,16 +187,18 @@
                                             <?php
                                                 }
                                             ?>
-                                            <div class="row mb-3">
+
+                                            </div>
+                                            <div class="row justify-content-end">
                                                 <!-- <label class="col-sm-3 col-form-label">Name</label> -->
-                                                <div class="offset-sm-3 col-sm-3 d-grid">
-                                                    <button type="submit" class="btn btn-primary" name="newItemSubmit">Submit</button>
-                                                </div>
                                                 <div class="col-sm-3 d-grid">
-                                                    <a href="<?php echo $_SESSION['selectedTablePage']?>" class="btn btn-outline-primary" role="button">Cancel</a>
+                                                    <div class="d-flex gap-2">
+                                                        <button type="submit" class="btn btn-primary" name="newItemSubmit">Submit</button>
+                                                        <a href="<?php echo $_SESSION['selectedTablePage']?>" class="btn btn-outline-secondary" role="button">Cancel</a>
+                                                        <!-- <input type="text" class="form-control" name="name" value=""> -->
+                                                    </div>
                                                     <!-- <input type="text" class="form-control" name="name" value=""> -->
                                                 </div>
-                                            </div>
                                         </form>
                                     </div>
                                 </div>
