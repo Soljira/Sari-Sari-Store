@@ -29,7 +29,7 @@
                             <td><?php echo htmlspecialchars($row['address']) ?></td>
                             <td><?php echo htmlspecialchars($row['created_at']) ?></td>
                             <td class="text-end">
-                                <a class="btn btn-primary btn-sm" href="../actions/edit.php?authorID=<?php echo $row['authorID']?>">Edit</a>
+                                <a class="btn btn-primary btn-sm" href="<?= BASE_URL ?>src/services/crud/edit-item.php?customer_id=<?php echo $row['customer_id']?>">Edit</a>
                                 <form method="POST" action="../actions/delete.php" style="display:inline;">
                                     <input type="hidden" name="authorID" value="<?php echo $row['authorID']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm"
@@ -51,7 +51,7 @@
                             <td><?php echo htmlspecialchars($row['stock_quantity']) ?></td>
                             <td><?php echo htmlspecialchars($row['created_at']) ?></td>
                             <td class="text-end">
-                                <a class="btn btn-primary btn-sm" href="../actions/edit.php?bookID=<?php echo $row['bookID']?>">Edit</a> 
+                                <a class="btn btn-primary btn-sm" href="<?= BASE_URL ?>src/services/crud/edit-item.php?item_id=<?php echo $row['item_id']?>">Edit</a> 
                                 <form method="POST" action="../actions/delete.php" style="display:inline;">
                                     <input type="hidden" name="bookID" value="<?php echo $row['bookID']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm"
@@ -74,7 +74,7 @@
                             <td><?php echo htmlspecialchars($row['transaction_date']) ?></td>
                             <td><?php echo htmlspecialchars($row['date_added']) ?></td>
                             <td class="text-end">
-                                <a class="btn btn-primary btn-sm" href="../actions/edit.php?orderID=<?php echo $row['orderID']?>">Edit</a>
+                                <a class="btn btn-primary btn-sm" href="<?= BASE_URL ?>src/services/crud/edit-item.php?transaction_id=<?php echo $row['transaction_id']?>">Edit</a>
                                 <form method="POST" action="../actions/delete.php" style="display:inline;">
                                     <input type="hidden" name="orderID" value="<?php echo $row['orderID']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm"

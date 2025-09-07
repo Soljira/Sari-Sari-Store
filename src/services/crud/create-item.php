@@ -6,9 +6,6 @@
     require_once(__DIR__ . "/../../../assets/scripts/config.php");
     require_once(BASE_PATH . "src/services/start-session.php");
     $_SESSION['selectedTablePage'] = $_SERVER['HTTP_REFERER'];
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +31,7 @@
 
     <div class="container mx-auto">
 
-        <main >
+        <main>
             <?php
                 $selectedTable = $_SESSION['selectedTable'];
 
@@ -99,10 +96,10 @@
                                 case "customerNewItem":
                                     ?><h1 class="text-center my-3">New Customer</h1><?php         
                                     break;
-                                case "itemsNewItem":
+                                case "itemNewItem":
                                     ?><h1>New Inventory Item</h1><?php
                                     break;
-                                case "transactionsNewItem":
+                                case "transactionNewItem":
                                     ?><h1>New Transaction</h1><?php
                                     break;
                             } // End of switch statements 

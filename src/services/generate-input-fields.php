@@ -5,9 +5,9 @@
     // TODO: turn bookGenre into a dropdown list if may time
 
     function generateCreateFields($table, $conn) {
-        $dateColumns = array("bookPublicationDate", "orderDate");
-        $intColumns = array("bookQuantity", "bookTitle", "orderID", "bookID", "quantity");
-        $floatColumns = array("bookPrice", "unitPrice");
+        $dateColumns = array("created_at", "date_added", "transaction_date");
+        $intColumns = array("stock_quantity", "quantity");
+        $floatColumns = array("price", "total_amount");   
         ?>
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -22,7 +22,7 @@
             $autoIncrementRow = mysqli_fetch_assoc($autoIncrementResult);
             $nextID = $autoIncrementRow['Auto_increment'];
             ?>
-                        <form id="newItemForm" method="POST" action="./crud/insert-data.php">
+                        <form id="newItemForm" method="POST" action="<?= BASE_URL ?>src/services/crud/insert-data.php">
             <?php
             while ($row = mysqli_fetch_assoc($result)) {
                 // echo htmlspecialchars($row['Field']) . "<br>";
@@ -75,15 +75,15 @@
 
     // with existing data
     function generateEditFields($table, $rowData, $conn) {
-        $dateColumns = array("bookPublicationDate", "orderDate");
-        $intColumns = array("bookQuantity", "bookTitle", "orderID", "bookID", "quantity");
-        $floatColumns = array("bookPrice", "unitPrice");        
+        $dateColumns = array("created_at", "date_added", "transaction_date");
+        $intColumns = array("stock_quantity", "quantity");
+        $floatColumns = array("price", "total_amount");        
         ?>
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-body">
-                        <form id="editItemForm" method="POST" action="../php-scripts/update-data.php">
+                        <form id="editItemForm" method="POST" action="<?= BASE_URL ?>src/services/crud/update-data.php">
         <?php
             foreach ($rowData as $key => $value) {
                 // maybe the action should have a variable to specify redirects
@@ -102,26 +102,26 @@
                                 <div class="col-sm-9">
                                     <?php if ($key == "created_at") {
                                         continue;
-                                    } elseif (stripos($key, "ID") !== false) { ?>
+                                    } elseif (stripos($key, "_id") !== false) { ?>
                                         <input type="text" class="form-control" 
                                             name="<?php echo $key; ?>" 
                                             value="<?php echo $value; ?>" readonly>                                    
                                     <?php 
-                                    } elseif ($key == "bookPublicationDate" || $key == "orderDate") { ?>
+                                    } elseif ($key == "created_at" || 
+                                              $key == "date_added" || 
+                                              $key == "transaction_date") { ?>
                                         <input type="date" class="form-control" 
                                             name="<?php echo $key; ?>" 
                                             value="<?php echo $value; ?>">                                    
                                     <?php 
-                                    } elseif ($key == "bookQuantity" || 
-                                              $key == "orderID" || 
-                                              $key == "bookID" || 
+                                    } elseif ($key == "stock_quantity" || 
                                               $key == "quantity") { // WHY TF IS ARRAY_KEY_EXISTS NOT WORKING ?>
                                         <input type="number" min="0" class="form-control" 
                                             name="<?php echo $key; ?>" 
                                             value="<?php echo $value; ?>">                                    
                                     <?php  
-                                    } elseif ($key == "bookPrice" || 
-                                              $key == "unitPrice") { ?>
+                                    } elseif ($key == "price" || 
+                                              $key == "total_amount") { ?>
                                         <input type="number" step="0.01" min="0" class="form-control" 
                                             name="<?php echo $key; ?>" 
                                             value="<?php echo $value; ?>">                                    
