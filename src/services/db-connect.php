@@ -4,22 +4,24 @@
 
 // Get database configuration from environment variables
 // I DONT HAVE AN .ENV FILE
+// REMINDER: change password to whatever the host's db password is. may require you to remove it entirely.
 $host = getenv('DB_HOST') ?: 'localhost';
 $user = getenv('DB_USER') ?: 'root';
 $pass = getenv('DB_PASSWORD') ?: 'password';
 $db   = getenv('DB_NAME') ?: 'sari_sari_store';
 $port = getenv('DB_PORT') ?: 3306;
 
-// TODO: Only accept connection if getenv('ENVIRONMENT') === 'development
-if (empty($pass)) {
-    $errorMsg = "CONFIGURATION ERROR: DB_PASSWORD not found. ";
-    if (!$envLoaded) {
-        $errorMsg .= "Could not locate .env file. Please ensure .env file exists in project root.";
-    } else {
-        $errorMsg .= "Please check your .env file contains DB_PASSWORD.";
-    }
-    die($errorMsg);
-}
+// This is not needed anymore FOR NOW
+// // TODO: Only accept connection if getenv('ENVIRONMENT') === 'development
+// if (empty($pass)) {
+//     $errorMsg = "CONFIGURATION ERROR: DB_PASSWORD not found. ";
+//     if (!$envLoaded) {
+//         $errorMsg .= "Could not locate .env file. Please ensure .env file exists in project root.";
+//     } else {
+//         $errorMsg .= "Please check your .env file contains DB_PASSWORD.";
+//     }
+//     die($errorMsg);
+// }
 
 try {
     $dsn = "mysql:host=$host;dbname=$db;port=$port;charset=utf8mb4";
