@@ -30,8 +30,8 @@
                             <td><?php echo htmlspecialchars($row['created_at']) ?></td>
                             <td class="text-end">
                                 <a class="btn btn-primary btn-sm" href="<?= BASE_URL ?>src/services/crud/edit-item.php?customer_id=<?php echo $row['customer_id']?>">Edit</a>
-                                <form method="POST" action="../actions/delete.php" style="display:inline;">
-                                    <input type="hidden" name="authorID" value="<?php echo $row['authorID']; ?>">
+                                <form method="POST" action="<?= BASE_URL ?>src/services/crud/delete-item.php" style="display:inline;">
+                                    <input type="hidden" name="customer_id" value="<?php echo $row['customer_id']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirm('Are you sure you want to delete this?');">
                                         Delete
@@ -52,8 +52,8 @@
                             <td><?php echo htmlspecialchars($row['created_at']) ?></td>
                             <td class="text-end">
                                 <a class="btn btn-primary btn-sm" href="<?= BASE_URL ?>src/services/crud/edit-item.php?item_id=<?php echo $row['item_id']?>">Edit</a> 
-                                <form method="POST" action="../actions/delete.php" style="display:inline;">
-                                    <input type="hidden" name="bookID" value="<?php echo $row['bookID']; ?>">
+                                <form method="POST" action="<?= BASE_URL ?>src/services/crud/delete-item.php" style="display:inline;">
+                                    <input type="hidden" name="item_id" value="<?php echo $row['item_id']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirm('Are you sure you want to delete this?');">
                                         Delete
@@ -75,8 +75,8 @@
                             <td><?php echo htmlspecialchars($row['date_added']) ?></td>
                             <td class="text-end">
                                 <a class="btn btn-primary btn-sm" href="<?= BASE_URL ?>src/services/crud/edit-item.php?transaction_id=<?php echo $row['transaction_id']?>">Edit</a>
-                                <form method="POST" action="../actions/delete.php" style="display:inline;">
-                                    <input type="hidden" name="orderID" value="<?php echo $row['orderID']; ?>">
+                                <form method="POST" action="<?= BASE_URL ?>src/services/crud/delete-item.php" style="display:inline;">
+                                    <input type="hidden" name="transaction_id" value="<?php echo $row['transaction_id']; ?>">
                                     <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="return confirm('Are you sure you want to delete this?');">
                                         Delete

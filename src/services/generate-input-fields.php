@@ -2,7 +2,7 @@
     // without existing data
     $selectedTable = $_SESSION['selectedTable'];
 
-    // TODO: turn bookGenre into a dropdown list if may time
+    // TODO: turn category into a dropdown list if may time
 
     function generateCreateFields($table, $conn) {
         $dateColumns = array("created_at", "date_added", "transaction_date");
