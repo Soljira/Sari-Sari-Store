@@ -1,4 +1,4 @@
-<footer class="containter footer mt-auto py-3 bg-light text-center bg-dark static-bottom">
+<footer class="containter footer mt-auto py-3 bg-light text-center bg-dark">
     <a 
         class="nav-link text-nowrap mx-1 text-white fs-4"
         href="#">
@@ -11,7 +11,7 @@
     >
         <i class="bi bi-github" style="vertical-align: text-center;"></i>
         <!-- <span><img src="../assets/icons/github.svg" class="me-2"></img></span> -->
-        Repository Link
+        Source Code
     </a>
     <span class="text-white">&copy 2025 All rights reserved</span>
 

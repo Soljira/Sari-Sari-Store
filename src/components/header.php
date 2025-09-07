@@ -6,20 +6,6 @@
                 Aling Mari's Sari Sari Store
             </a>
             <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
-            <ul class="navbar-nav pe-3 fs-6">
-                <li>
-                    <a class="nav-link text-nowrap" href="#"">
-                        <!-- <span><img src="<?= BASE_URL ?>ssets/images/search.svg" class="me-2" alt="Search"></img></span> -->
-                        <i class="bi bi-search"></i>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link text-nowrap" href="#"">
-                        <!-- <span><img src="<?= BASE_URL ?>assets/images/cart.svg" class="me-2" alt="Shopping Cart"></img></span> -->
-                        <i class="bi bi-cart"></i>
-                    </a>
-                </li>
-            </ul>
         </div>
     </nav>    
 </header>
