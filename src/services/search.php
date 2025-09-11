@@ -1,13 +1,22 @@
 <?php
+session_start();
+
 
 $conn = new mysqli("localhost", "root", "", "sari_sari_store");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$currentpage = $_GET['page'] ?? 'customer';
-$itemToBeSearched = $_POST['search'] ?? '';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $table = $_SESSION['selectedTable'] ?? 'customer' ;
+} else {
+    $table = $_GET['page'] ?? 'customer';
 
+}
+
+$currentpage= $table;
+
+$itemToBeSearched = $_POST['search'] ?? '';
 
 if ($currentpage == "customer") {
     $sql = "SELECT customer_id, first_name, last_name, contact_number, address 
@@ -67,4 +76,5 @@ echo "</table>";
 
 $stmt->close();
 $conn->close();
+
 ?>
