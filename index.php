@@ -154,7 +154,7 @@ foreach ($monthlyData as $data) {
         <div class="row g-4 mb-5">
             <div class="col-md-3">
                 <div class="card metric-card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center">
+                    <div class="card-body d-flex flex-column justify-content-center text-center">
                         <i class="bi bi-box-seam text-primary mb-3" style="font-size: 2rem;"></i>
                         <h3 class="card-title text-primary"><?php echo number_format($metrics['total_items']); ?></h3>
                         <p class="card-text text-muted">Total Items</p>
@@ -164,7 +164,7 @@ foreach ($monthlyData as $data) {
             
             <div class="col-md-3">
                 <div class="card metric-card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center">
+                    <div class="card-body d-flex flex-column justify-content-center text-center">    
                         <i class="bi bi-graph-up text-success mb-3" style="font-size: 2rem;"></i>
                         <h3 class="card-title text-success"><?php echo number_format($metrics['total_sales']); ?></h3>
                         <p class="card-text text-muted">Total Sales</p>
@@ -174,7 +174,7 @@ foreach ($monthlyData as $data) {
             
             <div class="col-md-3">
                 <div class="card metric-card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center">
+                    <div class="card-body d-flex flex-column justify-content-center text-center">
                         <i class="bi bi-people text-info mb-3" style="font-size: 2rem;"></i>
                         <h3 class="card-title text-info"><?php echo number_format($metrics['total_customers']); ?></h3>
                         <p class="card-text text-muted">Total Customers</p>

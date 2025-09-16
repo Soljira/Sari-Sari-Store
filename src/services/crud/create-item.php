@@ -29,6 +29,11 @@ if (!$selectedTable) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" defer></script>
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/styles/bootstrap-adjustments.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../../../assets/styles/styles.css">
 
 </head>
@@ -52,7 +57,7 @@ include(BASE_PATH . "src/components/navigation.php");
         $nextID = $autoIncrementRow['Auto_increment'];
         ?>
 
-        <h1 class="text-center my-3">New <?= htmlspecialchars(ucfirst(rtrim($selectedTable, 's'))) ?></h1>
+        <h1 class="text-center my-3 aclonica-regular">New <?= htmlspecialchars(ucfirst(rtrim($selectedTable, 's'))) ?></h1>
 
         <div class="row justify-content-center">
             <div class="col-md-8">
