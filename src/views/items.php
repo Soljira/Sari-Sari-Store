@@ -25,7 +25,7 @@
         <h1 class="text-center my-3">Items</h1>
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-1 pb-2 mb-3 border-bottom">
-            <form class="d-flex flex-grow-1 me-2" role="search">
+            <form class="d-flex flex-grow-1 me-2" role="search" method="GET" action="<?= BASE_URL ?>src/services/search.php">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
