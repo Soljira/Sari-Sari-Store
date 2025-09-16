@@ -23,18 +23,22 @@
     ?>
 
     <div class="container mx-auto">
-       <form class="d-flex flex-grow-1 me-2" role="search" method="GET" action="<?= BASE_URL ?>src/services/search.php">
+        <!-- <form class="d-flex flex-grow-1 me-2" role="search" method="GET" action="<?= BASE_URL ?>src/services/search.php">
             <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> -->
 
         <h1 class="text-center my-3">Customers</h1>
 
         <!-- title something and new item -->
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-1 pb-2 mb-3 border-bottom">
-            <form class="d-flex flex-grow-1 me-2" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex flex-grow-1 me-2" role="search" method="GET" action="<?= BASE_URL ?>src/services/search.php">
+                <input type="hidden" name="table" value="customer">
+                <input class="form-control me-2" type="search" name="query" placeholder="Search customers..." aria-label="Search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
                 <button class="btn btn-outline-success" type="submit">Search</button>
+                <?php if (!empty($_GET['search'])): ?>
+                    <a href="?" class="btn btn-outline-secondary ms-2">Clear</a>
+                <?php endif; ?>
             </form>
             <form method="POST" action="<?= BASE_URL ?>src/services/crud/create-item.php?customer">
                 <button type="submit" name="newItem" value="customerNewItem" class="btn btn-success">+ New Item</button>
@@ -57,16 +61,37 @@
                 </thead>
                 <tbody>
                     <?php
-                        include(BASE_PATH . "src/services/crud/read-table.php");
-                        readTable("customer", $conn);
+                        // include(BASE_PATH . "src/services/crud/read-table.php");
+                        // readTable("customer", $conn);
+                        // $_SESSION['selectedTable'] = "customer";
+                        // mysqli_close($conn);
+                      
+                        // Check if we have search results or show all
+                        $searchTerm = $_GET['search'] ?? '';
+
+                        if (!empty($searchTerm)) {
+                            // Display search results (logic handled by search.php)
+                            include(BASE_PATH . "src/services/search-results.php");
+                        } else {
+                            // Show all customers (original logic)
+                            include(BASE_PATH . "src/services/crud/read-table.php");
+                            readTable("customer", $conn);
+                        }
+
                         $_SESSION['selectedTable'] = "customer";
                         mysqli_close($conn);
-                    ?>
+                        ?>
                 </tbody>
             </table>
             <!-- TODO: Pagination -->
         </div>
-        <h2 class="text-center">Pagination here</h2>
+        <?php if (!empty($searchTerm)): ?>
+        <div class="alert alert-info">
+            Showing search results for: <strong><?= htmlspecialchars($searchTerm) ?></strong>
+        </div>
+        <?php endif; ?>
+
+        <!-- <h2 class="text-center">Pagination here</h2> -->
 
 
     </div>

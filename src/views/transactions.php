@@ -25,9 +25,13 @@
         <h1 class="text-center my-3">Transactions</h1>
 
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-1 pb-2 mb-3 border-bottom">
-            <form class="d-flex flex-grow-1 me-2" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex flex-grow-1 me-2" role="search" method="GET" action="<?= BASE_URL ?>src/services/search.php">
+                <input type="hidden" name="table" value="transaction">
+                <input class="form-control me-2" type="search" name="query" placeholder="Search transactions..." aria-label="Search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
                 <button class="btn btn-outline-success" type="submit">Search</button>
+                <?php if (!empty($_GET['search'])): ?>
+                    <a href="?" class="btn btn-outline-secondary ms-2">Clear</a>
+                <?php endif; ?>
             </form>
             <form method="POST" action="<?= BASE_URL ?>src/services/crud/create-item.php?transaction">
                 <button type="submit" name="newItem" value="transactionNewItem" class="btn btn-success">+ New Item</button>
@@ -49,8 +53,20 @@
                 </thead>
                 <tbody>
                     <?php
-                        include(BASE_PATH . "src/services/crud/read-table.php");
-                        readTable("transactions", $conn);
+                        // include(BASE_PATH . "src/services/crud/read-table.php");
+                        // readTable("transactions", $conn);
+                        // $_SESSION['selectedTable'] = "transactions";
+                        // mysqli_close($conn);
+
+                        $searchTerm = $_GET['search'] ?? '';
+
+                        if (!empty($searchTerm)) {
+                            include(BASE_PATH . "src/services/search-results.php");
+                        } else {
+                            include(BASE_PATH . "src/services/crud/read-table.php");
+                            readTable("transactions", $conn);
+                        }
+
                         $_SESSION['selectedTable'] = "transactions";
                         mysqli_close($conn);
                     ?>
@@ -58,7 +74,12 @@
             </table>
             <!-- TODO: Pagination -->
         </div>
-        <h2 class="text-center">Pagination here</h2>
+        <?php if (!empty($searchTerm)): ?>
+            <div class="alert alert-info">
+                Showing search results for: <strong><?= htmlspecialchars($searchTerm) ?></strong>
+            </div>
+        <?php endif; ?>
+        <!-- <h2 class="text-center">Pagination here</h2> -->
 
 
     </div>

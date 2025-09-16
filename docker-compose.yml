@@ -5,7 +5,6 @@ services:
     ports:
       - "8080:80"
     volumes:
-      # Mount project for live editing
       - .:/var/www/html
     environment:
       DB_HOST: db
