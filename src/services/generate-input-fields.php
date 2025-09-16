@@ -74,84 +74,90 @@
     } // end of generateCreateFields function
 
     // with existing data
-    function generateEditFields($table, $rowData, $conn) {
-        $dateColumns = array("created_at", "date_added", "transaction_date");
-        $intColumns = array("stock_quantity", "quantity");
-        $floatColumns = array("price", "total_amount");        
-        ?>
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body">
-                        <form id="editItemForm" method="POST" action="<?= BASE_URL ?>src/services/crud/update-data.php">
-        <?php
-            foreach ($rowData as $key => $value) {
-                // maybe the action should have a variable to specify redirects
-                ?>
-                            <div class="row mb-3">
-                                <!-- Prints column names -->
-                                <label class="col-sm-3 col-form-label">
-                                    <?php 
-                                        // This will remove the created_at input field because created_at is purely for keeping integrity
-                                        if ($key != "created_at") {
-                                            echo $key;
-                                        }
-                                    ?>
-                                </label>
-                                <!-- Displays input fields -->
-                                <div class="col-sm-9">
-                                    <?php if ($key == "created_at") {
-                                        continue;
-                                    } elseif (stripos($key, "_id") !== false) { ?>
-                                        <input type="text" class="form-control" 
-                                            name="<?php echo $key; ?>" 
-                                            value="<?php echo $value; ?>" readonly>                                    
-                                    <?php 
-                                    } elseif ($key == "created_at" || 
-                                              $key == "date_added" || 
-                                              $key == "transaction_date") { ?>
-                                        <input type="date" class="form-control" 
-                                            name="<?php echo $key; ?>" 
-                                            value="<?php echo $value; ?>">                                    
-                                    <?php 
-                                    } elseif ($key == "stock_quantity" || 
-                                              $key == "quantity") { // WHY TF IS ARRAY_KEY_EXISTS NOT WORKING ?>
-                                        <input type="number" min="0" class="form-control" 
-                                            name="<?php echo $key; ?>" 
-                                            value="<?php echo $value; ?>">                                    
-                                    <?php  
-                                    } elseif ($key == "price" || 
-                                              $key == "total_amount") { ?>
-                                        <input type="number" step="0.01" min="0" class="form-control" 
-                                            name="<?php echo $key; ?>" 
-                                            value="<?php echo $value; ?>">                                    
-                                    <?php  
-                                    } else { ?>
-                                        <input type="text" class="form-control" 
-                                            name="<?php echo $key; ?>" 
-                                            value="<?php echo $value; ?>">
-                                    <?php } ?>        
-                                </div>            
-                            </div>
+function generateEditFields($table, $rowData, $conn) {
+    $dateColumns = array("created_at", "date_added", "transaction_date");
+    $intColumns = array("stock_quantity", "quantity");
+    $floatColumns = array("price", "total_amount");        
+    ?>
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <form id="editItemForm" method="POST" action="<?= BASE_URL ?>src/services/crud/update-data.php">
+    <?php
+        foreach ($rowData as $key => $value) {
+            ?>
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">
+                    <?php if ($key != "created_at") echo $key; ?>
+                </label>
+                <div class="col-sm-9">
                     <?php
-            }  // end of foreach block ?>
-                            </div>
-                            <div class="row justify-content-end mb-3">
-                                <!-- <label class="col-sm-3 col-form-label">Name</label> -->
-                                <div class="col-sm-3 d-grid">
-                                    <div class="d-flex gap-2">
-                                        <button type="submit" class="btn btn-primary" name="editItemSubmit">Submit</button>
-                                        <a href="<?php echo $_SESSION['selectedTablePage']?>" class="btn btn-outline-secondary" role="button">Cancel</a>
-                                        <!-- <input type="text" class="form-control" name="name" value=""> -->
-                                    </div>
-                                </div>
-                            </div>
+                    if ($key == "created_at") {
+                        continue;
+                    } elseif (($key == "customer_id" || $key == "item_id") && $table == "transactions") {
+                        $foreignTable = $key == "customer_id" ? "customer" : "items";
+                        $foreignKey = $key;
 
-                        </form>
+                        // Correct query based on table
+                        if ($foreignTable == "customer") {
+                            $foreignQuery = "SELECT customer_id, CONCAT(first_name,' ',last_name) AS name FROM customer";
+                        } else { // items table
+                            $foreignQuery = "SELECT item_id, item_name AS name FROM items";
+                        }
 
+                        $foreignResult = mysqli_query($conn, $foreignQuery);
+                        if (!$foreignResult) {
+                            die("Foreign key query failed: " . mysqli_error($conn));
+                        }
+                        ?>
+                        <select class="form-select" name="<?= $key ?>" required>
+                            <option value="">Select <?= $key ?></option>
+                            <?php while ($fRow = mysqli_fetch_assoc($foreignResult)) { ?>
+                                <option value="<?= $fRow[$foreignKey] ?>" <?= ($fRow[$foreignKey] == $value) ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($fRow['name']) ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <?php
+                    } elseif (stripos($key, "_id") !== false) {
+                        // Other _id fields remain readonly
+                        ?>
+                        <input type="text" class="form-control" name="<?= $key ?>" value="<?= $value ?>" readonly>
+                        <?php
+                    } elseif (in_array($key, $dateColumns)) { ?>
+                        <input type="date" class="form-control" name="<?= $key ?>" value="<?= $value ?>">
+                    <?php
+                    } elseif (in_array($key, $intColumns)) { ?>
+                        <input type="number" min="0" class="form-control" name="<?= $key ?>" value="<?= $value ?>">
+                    <?php
+                    } elseif (in_array($key, $floatColumns)) { ?>
+                        <input type="number" step="0.01" min="0" class="form-control" name="<?= $key ?>" value="<?= $value ?>">
+                    <?php
+                    } else { ?>
+                        <input type="text" class="form-control" name="<?= $key ?>" value="<?= $value ?>">
+                    <?php } ?>
+                </div>
+            </div>
+            <?php
+        } // end foreach
+    ?>
+            <div class="row justify-content-end mb-3">
+                <div class="col-sm-3 d-grid">
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-primary" name="editItemSubmit">Submit</button>
+                        <a href="<?= $_SESSION['selectedTablePage']?>" class="btn btn-outline-secondary" role="button">Cancel</a>
+                    </div>
+                </div>
+            </div>
+                    </form>
                 </div>
             </div>
         </div>
-        <?php              
-    } // end of generateCreateFields function
+    </div>
+    <?php
+}
+
+
+    
 ?>

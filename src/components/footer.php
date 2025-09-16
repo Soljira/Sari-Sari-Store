@@ -1,10 +1,10 @@
 <footer class="containter footer mt-auto py-3 bg-light text-center bg-dark">
-    <a 
+    <!-- <a 
         class="nav-link text-nowrap mx-1 text-white fs-4"
         href="#">
         About Us
-    </a>
-    <hr class="text-white">
+    </a> -->
+    <!-- <hr class="text-white"> -->
     <a
         class="nav-link text-nowrap mx-1 text-white fs-4"
         href="https://github.com/Soljira/Sari-Sari-Store"
