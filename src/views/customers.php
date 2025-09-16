@@ -23,7 +23,10 @@
     ?>
 
     <div class="container mx-auto">
-        <!-- search button -->
+       <form class="d-flex flex-grow-1 me-2" role="search" method="GET" action="<?= BASE_URL ?>src/services/search.php">
+            <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
 
         <h1 class="text-center my-3">Customers</h1>
 
