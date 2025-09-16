@@ -142,14 +142,10 @@ function generateEditFields($table, $rowData, $conn) {
             <?php
         } // end foreach
     ?>
-            <div class="row justify-content-end mb-3">
-                <div class="col-sm-3 d-grid">
-                    <div class="d-flex gap-2">
-                        <button type="submit" class="btn btn-primary" name="editItemSubmit">Submit</button>
-                        <a href="<?= $_SESSION['selectedTablePage']?>" class="btn btn-outline-secondary" role="button">Cancel</a>
-                    </div>
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <button type="submit" class="btn btn-primary" name="editItemSubmit">Submit</button>
+                    <a href="<?= $_SESSION['selectedTablePage']?>" class="btn btn-outline-secondary" role="button">Cancel</a>
                 </div>
-            </div>
                     </form>
                 </div>
             </div>

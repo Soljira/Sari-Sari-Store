@@ -134,6 +134,12 @@ foreach ($monthlyData as $data) {
             height: 400px;
         }
     </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/styles/styles.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
     <?php

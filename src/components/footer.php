@@ -1,4 +1,4 @@
-<footer class="containter footer mt-auto py-3 bg-light text-center bg-dark">
+<footer class="container-fluid footer mt-auto py-3 text-center">
     <!-- <a 
         class="nav-link text-nowrap mx-1 text-white fs-4"
         href="#">

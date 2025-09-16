@@ -15,6 +15,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?= BASE_URL ?>assets/styles/bootstrap-adjustments.css">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aclonica&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../assets/styles/styles.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
     <?php
@@ -28,16 +33,16 @@
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form> -->
 
-        <h1 class="text-center my-3">Customers</h1>
+        <h1 class="text-center my-3 aclonica-regular">Customers</h1>
 
         <!-- title something and new item -->
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-1 pb-2 mb-3 border-bottom">
             <form class="d-flex flex-grow-1 me-2" role="search" method="GET" action="<?= BASE_URL ?>src/services/search.php">
                 <input type="hidden" name="table" value="customer">
                 <input class="form-control me-2" type="search" name="query" placeholder="Search customers..." aria-label="Search" value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-primary" type="submit">Search</button>
                 <?php if (!empty($_GET['search'])): ?>
-                    <a href="?" class="btn btn-outline-secondary ms-2">Clear</a>
+                    <a href="?" class="btn btn-secondary ms-2">Clear</a>
                 <?php endif; ?>
             </form>
             <form method="POST" action="<?= BASE_URL ?>src/services/crud/create-item.php?customer">
@@ -57,6 +62,7 @@
                         <th>Contact Number</th>
                         <th>Address</th>
                         <th>Created At</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
