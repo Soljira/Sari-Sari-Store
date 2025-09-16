@@ -1,0 +1,44 @@
+services:
+  web:
+    build: .
+    container_name: sari-sari-web
+    ports:
+      - "8080:80"
+    volumes:
+      # Mount project for live editing
+      - .:/var/www/html
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_NAME: sari_sari_store
+      DB_PORT: 3306
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    image: mariadb:latest
+    container_name: sari-sari-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: sari_sari_store
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./sari-sari-store.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    command: --default-authentication-plugin=mysql_native_password
+
+  adminer:
+    image: adminer
+    container_name: sari-sari-adminer
+    restart: always
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
