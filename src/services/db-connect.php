@@ -5,7 +5,7 @@
 // Get database configuration from environment variables
 // I DONT HAVE AN .ENV FILE
 // REMINDER: change password to whatever the host's db password is. may require you to remove it entirely.
-$host = getenv('DB_HOST') ?: 'localhost';
+$host = getenv('DB_HOST') ?: 'db';  // or localhost
 $user = getenv('DB_USER') ?: 'root';
 $pass = getenv('DB_PASSWORD') ?: 'password';
 $db   = getenv('DB_NAME') ?: 'sari_sari_store';

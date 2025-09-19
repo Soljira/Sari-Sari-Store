@@ -27,6 +27,8 @@ if (empty($searchTerm)) {
 $searchResults = [];
 $hasResults = false;
 
+// Actual search logic
+// very simple
 try {
     if ($table == "customer") {
         $sql = "SELECT customer_id, first_name, last_name, contact_number, address, created_at 
@@ -78,7 +80,6 @@ try {
         $stmt->execute();
         $result = $stmt->get_result();
         
-        // Store results in session for display
         $_SESSION['search_results'] = [];
         $_SESSION['search_term'] = $searchTerm;
         $_SESSION['search_table'] = $table;

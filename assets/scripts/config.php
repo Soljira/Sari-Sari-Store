@@ -2,10 +2,13 @@
 // define('BASE_URL', '/sari-sari-store/');    // for redirect links
 // define('BASE_PATH', __DIR__ . '/../../');   // used in reusable components
 
-// Detect the base folder of the project
-$projectFolder = '/sari-sari-store'; // adjust this if your project folder has a fixed name
+// BASE_URL is for the Web URL; used for browser/client-side operations
+// BASE_PATH is for the file system path in the server; used for server-side PHP operations
 
-// If running under Docker at root, strip it
+// stores the base folder of the project
+$projectFolder = '/sari-sari-store';
+
+// FOR DOCKER url STUFF 
 $scriptName = str_replace('\\', '/', $_SERVER['SCRIPT_NAME']);
 if (strpos($scriptName, $projectFolder) === false) {
     $baseUrl = '/';

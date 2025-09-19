@@ -1,0 +1,169 @@
+/* assets/styles/dashboard.css */
+
+/* Dashboard Cards */
+.metric-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 12px;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Hot Items Styling */
+.hot-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+}
+
+.hot-item:last-child {
+    border-bottom: none;
+}
+
+.hot-item:hover {
+    background-color: rgba(255, 193, 7, 0.05);
+    border-radius: 4px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+/* Chart Container */
+.chart-container {
+    position: relative;
+    height: 400px;
+    width: 100%;
+}
+
+/* Card Headers */
+.card-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1rem 1.25rem;
+}
+
+.card-header h5 {
+    font-weight: 600;
+    color: #495057;
+}
+
+/* Custom Shadows */
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Dashboard Layout */
+.dashboard-main {
+    /* background-color: #f8f9fa; */
+    min-height: 100vh;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 300px;
+    }
+    
+    .hot-item span.text-truncate {
+        max-width: 80px !important;
+    }
+    
+    .metric-card .card-body {
+        padding: 1rem 0.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .chart-container {
+        height: 250px;
+    }
+    
+    .hot-item {
+        font-size: 0.875rem;
+    }
+    
+    .metric-card h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Loading Animation for Charts */
+.chart-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    color: #6c757d;
+}
+
+/* Custom Badge Colors */
+.badge.bg-warning {
+    background-color: #ffc107 !important;
+}
+
+/* Dropdown Customization */
+.dropdown-menu {
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255, 193, 7, 0.1);
+}
+
+/* Animation for numbers */
+@keyframes countUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card-title {
+    animation: countUp 0.6s ease-out;
+}
+
+/* Custom scrollbar for dropdowns */
+.dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-menu::-webkit-scrollbar {
+    width: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 200px;
+    /* flex-basis: 0; */
+}
