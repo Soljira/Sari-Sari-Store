@@ -1,4 +1,4 @@
-# Sari-sari Store
+# Sari-Sari Store
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
@@ -18,7 +18,7 @@ A simple store managament system built with LAMP stack.
 
 ## Tech Stack
 
-- **Frontend:** Bootstrap
+- **Frontend:** Bootstrap 5
 - **Backend:** Apache, PHP
 - **Database:** MySQL
 - **Other:** Chart.js
