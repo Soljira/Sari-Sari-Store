@@ -2,6 +2,9 @@
 require_once(__DIR__ . "/../../assets/scripts/config.php");
 require_once(BASE_PATH . "src/services/start-session.php");
 
+// TODO: pag isesearch ung name, dapat kasama first name and last name
+// TODO: Dapat makita ung customer names sa transaction table; use join 
+
 $searchTerm = trim($_GET['query'] ?? $_GET['search'] ?? '');
 $table = $_GET['table'] ?? $_SESSION['selectedTable'] ?? 'customer';
 

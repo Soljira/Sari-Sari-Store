@@ -1,15 +1,79 @@
-ITE 314 Performance Task
-Deadline: Sept 12 2025
+# Sari-sari Store
 
-- Main page - Dashboard
-- Customer Page
-- Items Page
-- Transaction
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
+A simple store managament system built with LAMP stack.
 
-Apache needs to be configured to recognize index.php as an index file.
-https://stackoverflow.com/questions/2384423/index-php-not-loading-by-default
-Just append 'index.php' (beside index.html) to DirectoryIndex in /etc/httpd/conf/httpd.conf
+## Features
 
-website: http://127.0.0.1:8080
-adminer: http://127.0.0.1:8081
+- Table views for all your customers, inventory items, and transactions data
+- Charts
+- Search Function
+- Add, edit, and delete data
+
+## Screenshots
+![Homepage Screenshot](./assets/docs/home.png)
+
+![Features Screenshot](./assets/docs/features.png)
+
+## Tech Stack
+
+- **Frontend:** Bootstrap
+- **Backend:** Apache, PHP
+- **Database:** MySQL
+- **Other:** Chart.js
+
+## Getting Started
+
+### Prerequisites
+
+- Docker and Docker Compose
+- MySQL (or just use Docker for database)
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/Soljira/Sari-Sari-Store.git
+cd Sari-Sari-Store
+
+# Start with Docker Compose
+docker-compose up -d
+
+# The application will be available at http://localhost:8080/
+```
+
+Website: http://localhost:8080
+<br>Adminer: http://localhost:8081
+
+## Project Structure
+
+```
+├── assets/
+│   ├── docs/
+│   ├── fonts/
+│   ├── images/
+│   ├── scripts/            # Database utility functions
+│   └── styles/             # CSS and styling
+├── docker-compose.yml      # Multi-container setup
+├── Dockerfile              # Docker configuration
+├── sari-sari-store.sql     # Initial Database
+└── src/
+    ├── components/         # Reusable UI components
+    ├── services/           # Utility functions
+    │   └── crud/   
+    └── views/              # Page views
+```
+
+## Support
+
+- 📧 Email: soljiragit@gmail.com
+- 🐛 Issues: [GitHub Issues](https://github.com/Soljira/Sari-Sari-Store/issuess)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+⭐ If you found this project helpful, please give it a star on GitHub!
